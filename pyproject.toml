@@ -5,10 +5,17 @@ description = ""
 authors = ["corn <dalcon10280@gmail.com>"]
 readme = "README.md"
 package-mode = false
+packages = [
+    { include = "app" }
+]
+
+[tool.poetry.scripts]
+start = "app.main:start"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-
+fastapi = "^0.114.0"
+uvicorn = "^0.30.6"
 
 [build-system]
 requires = ["poetry-core"]
