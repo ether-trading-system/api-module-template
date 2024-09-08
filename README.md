@@ -1,6 +1,6 @@
 # Api Module Template
 
-> This is a template for creating a new module for fastapi and batch-jobs.
+> FastAPI, Batch Job 개발용 모듈 템플릿 
 
 ## Installation
 
