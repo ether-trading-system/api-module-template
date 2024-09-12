@@ -6,16 +6,19 @@ authors = ["corn <dalcon10280@gmail.com>"]
 readme = "README.md"
 package-mode = false
 packages = [
-    { include = "app" }
+    { include = "app" },
+    { include = "jobs" }
 ]
 
 [tool.poetry.scripts]
 start = "app.main:start"
+batch = "jobs.batch:run"
 
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.114.0"
 uvicorn = "^0.30.6"
+invoke = "^2.2.0"
 
 [build-system]
 requires = ["poetry-core"]
