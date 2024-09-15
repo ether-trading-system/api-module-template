@@ -4,8 +4,22 @@
 
 ## Installation
 
+To install the dependencies:
+
 ```bash
 poetry install
+```
+
+To run the examples, we need to enter the virtual environment:
+
+```bash
+poetry shell
+```
+
+Create the database tables:
+
+```bash
+poetry run create_tables
 ```
 
 ## Run
@@ -14,3 +28,5 @@ poetry install
 poetry shell
 poetry run start
 ```
+
+You can send HTTP requests from `http://localhost:8000/docs`.
