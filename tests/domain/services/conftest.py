@@ -19,5 +19,5 @@ async def async_session():
         async with async_session() as session:
             await session.begin()
             yield session
-            # await session.close()
-            await transaction.rollback()
+            await session.close()
+            await transaction.commit()
