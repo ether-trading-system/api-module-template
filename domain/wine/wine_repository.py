@@ -10,8 +10,6 @@ class WineRepository:
     async def save(self, wine: Wine) -> Wine:
         if not wine.id:
             self.session.add(wine)
-        # else:
-        #     await self.session.execute(update(Wine).where(Wine.id == wine.id).values(wine))
         await self.session.commit()
         await self.session.refresh(wine)
         return wine

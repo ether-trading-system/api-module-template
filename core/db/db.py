@@ -1,13 +1,15 @@
+import logging
+from contextlib import asynccontextmanager
+
 from datetime import datetime
-from sqlalchemy import MetaData, func
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
+from sqlalchemy import func
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession, async_scoped_session
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 SQLALCHEMY_DATABASE_URL = "sqlite+aiosqlite:///app.db"
 
-meta = MetaData()
-engine = create_async_engine(SQLALCHEMY_DATABASE_URL, echo=True)
-async_session = async_sessionmaker(engine, autoflush=False, autocommit=False)
+engine = create_async_engine(SQLALCHEMY_DATABASE_URL, echo=True, pool_pre_ping=True)
+session_factory = async_sessionmaker(engine, autoflush=False, future=True)
 
 
 class Base(DeclarativeBase):
@@ -16,12 +18,15 @@ class Base(DeclarativeBase):
 
 async def init_models():
     async with engine.begin() as conn:
-        await conn.run_sync(meta.create_all)
+        logging.info("Creating tables")
+        await conn.run_sync(Base.metadata.create_all)
 
 
-async def get_session() -> AsyncSession:
-    async with async_session() as session:
+@asynccontextmanager
+async def get_session():
+    async with session_factory() as session:
         try:
+            await session.begin()
             yield session
         finally:
             await session.close()

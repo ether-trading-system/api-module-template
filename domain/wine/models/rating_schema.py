@@ -1,4 +1,6 @@
 from datetime import datetime
+from uuid import UUID
+
 from pydantic import BaseModel
 
 
@@ -17,7 +19,7 @@ class RatingUpdate(RatingBase):
 
 class RatingModel(RatingBase):
     id: int
-    wine_id: str
+    wine_id: UUID
     created_at: datetime
 
     class Config:

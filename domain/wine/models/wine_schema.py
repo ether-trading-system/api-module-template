@@ -1,4 +1,6 @@
 from datetime import datetime
+from uuid import UUID
+
 from pydantic import BaseModel
 
 from domain.wine.models.rating_schema import RatingModel, RatingCreate, RatingUpdate
@@ -17,13 +19,13 @@ class WineCreate(WineBase):
 
 
 class WineUpdate(WineBase):
-    id: str
+    id: UUID
     rating: RatingUpdate
     pass
 
 
 class WineModel(WineBase):
-    id: str
+    id: UUID
     rating: RatingModel | None = None
     created_at: datetime
 
