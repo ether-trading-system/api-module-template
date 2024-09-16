@@ -1,5 +1,6 @@
 from datetime import datetime
 from pydantic import BaseModel
+
 from domain.wine.models.rating_schema import RatingModel, RatingCreate, RatingUpdate
 
 
@@ -27,4 +28,4 @@ class WineModel(WineBase):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
