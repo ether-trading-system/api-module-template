@@ -13,6 +13,15 @@ async def wine_repository(async_session: AsyncSession):
     yield WineRepository(async_session)
 
 
+@pytest.fixture(scope='function', autouse=True)
+async def clear_wines(async_session: AsyncSession):
+    logging.info('Tearing down wine repo')
+    await async_session.execute(delete(Wine))
+    await async_session.execute(delete(Rating))
+    await async_session.commit()
+    yield
+
+
 @pytest.mark.asyncio
 async def test_create_wine(wine_repository: WineRepository):
     """Test creating a wine in the database."""

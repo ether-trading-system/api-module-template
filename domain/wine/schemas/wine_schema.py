@@ -1,9 +1,30 @@
+from datetime import datetime
 from pydantic import BaseModel
+from domain.wine.schemas.rating_schema import RatingModel, RatingCreate, RatingUpdate
 
-class WineModel(BaseModel):
-    id: int
+
+class WineBase(BaseModel):
     winery: str
     wine: str
-    rating: dict
     location: str
     image: str
+
+
+class WineCreate(WineBase):
+    rating: RatingCreate
+    pass
+
+
+class WineUpdate(WineBase):
+    id: str
+    rating: RatingUpdate
+    pass
+
+
+class WineModel(WineBase):
+    id: str
+    rating: RatingModel | None = None
+    created_at: datetime
+
+    class Config:
+        orm_mode = True

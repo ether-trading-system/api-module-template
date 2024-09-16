@@ -1,5 +1,24 @@
-from pydantic import BaseModel, Field
+from datetime import datetime
+from pydantic import BaseModel
 
 
-class RatingModel(BaseModel):
-    wine_id: str = Field()
+class RatingBase(BaseModel):
+    average: float
+    reviews: float
+
+
+class RatingCreate(RatingBase):
+    pass
+
+
+class RatingUpdate(RatingBase):
+    pass
+
+
+class RatingModel(RatingBase):
+    id: int
+    wine_id: str
+    created_at: datetime
+
+    class Config:
+        orm_mode = True

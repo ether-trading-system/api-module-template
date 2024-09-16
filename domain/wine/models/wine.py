@@ -10,6 +10,6 @@ class Wine(Base):
     id: Mapped[str] = mapped_column(primary_key=True, default=str(uuid4()))
     winery: Mapped[str]
     wine: Mapped[str]
-    rating: Mapped["Rating"] = relationship()
+    rating: Mapped["Rating"] = relationship("Rating", lazy='selectin')
     location: Mapped[str]
     image: Mapped[str]

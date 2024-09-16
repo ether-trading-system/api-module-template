@@ -1,2 +1,2 @@
-from .wine_schema import WineModel
-from .rating_schema import RatingModel
+from .wine_schema import *
+from .rating_schema import *
