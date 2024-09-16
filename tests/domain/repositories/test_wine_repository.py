@@ -3,8 +3,8 @@ import logging
 
 from sqlalchemy import delete
 from sqlalchemy.ext.asyncio import AsyncSession
-from domain.wine.models.rating import Rating
-from domain.wine.models.wine import Wine
+from domain.wine.entities.rating import Rating
+from domain.wine.entities.wine import Wine
 from domain.wine.wine_repository import WineRepository
 
 

@@ -1,6 +1,6 @@
 from datetime import datetime
 from pydantic import BaseModel
-from domain.wine.schemas.rating_schema import RatingModel, RatingCreate, RatingUpdate
+from domain.wine.models.rating_schema import RatingModel, RatingCreate, RatingUpdate
 
 
 class WineBase(BaseModel):

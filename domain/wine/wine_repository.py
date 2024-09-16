@@ -1,7 +1,6 @@
-from typing import Sequence
-from sqlalchemy import select, delete, update
+from sqlalchemy import select, delete
 from sqlalchemy.ext.asyncio import AsyncSession
-from domain.wine.models.wine import Wine
+from domain.wine.entities.wine import Wine
 
 
 class WineRepository:

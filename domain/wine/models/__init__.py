@@ -1,2 +1,2 @@
-from .rating import Rating
-from .wine import Wine
+from .wine_schema import *
+from .rating_schema import *

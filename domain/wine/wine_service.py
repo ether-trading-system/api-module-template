@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
-from .models import Wine, Rating
-from .schemas import WineCreate, WineUpdate
+from .entities import Wine, Rating
+from .models import WineCreate, WineUpdate
 from .wine_repository import WineRepository
 
 

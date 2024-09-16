@@ -1,7 +1,7 @@
 from uuid import uuid4
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 from core.db import Base
-from domain.wine.models.rating import Rating
+from domain.wine.entities.rating import Rating
 
 
 class Wine(Base):

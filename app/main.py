@@ -1,10 +1,11 @@
 import uvicorn
 from fastapi import FastAPI
-from routes import health_router
+from .routes import *
 
 app: FastAPI = FastAPI()
 
 app.include_router(health_router)
+app.include_router(wines_router)
 
 
 @app.get("/")

@@ -1,6 +1,6 @@
-from domain.wine.models.rating import Rating
+from domain.wine.entities.rating import Rating
 from .db import engine
-from domain.wine.models.wine import Wine
+from domain.wine.entities.wine import Wine
 
 
 def create_tables():
